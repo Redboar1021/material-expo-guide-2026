@@ -1,0 +1,664 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>高機能素材 Week｜はじめての人のための展示会ガイド</title>
+  <style>
+    :root { --ink:#183034; --muted:#526669; --paper:#f4f8f6; --white:#fff; --green:#0b7467; --green-soft:#e1f2ec; --line:#d7e4df; --orange:#e58644; --orange-soft:#fff0e4; --blue:#327593; --blue-soft:#e6f3f8; --shadow:0 12px 32px rgba(21,55,49,.09); }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",Meiryo,sans-serif; line-height:1.75; }
+    a { color:var(--green); text-underline-offset:3px; }
+    button { font:inherit; }
+    .wrap { width:min(1120px,calc(100% - 36px)); margin:auto; }
+    .topbar { position:sticky; top:0; z-index:20; background:rgba(255,255,255,.95); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+    .topbar-inner { display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:62px; }
+    .brand { font-weight:800; letter-spacing:.02em; color:var(--ink); text-decoration:none; white-space:nowrap; }
+    .brand span { color:var(--green); }
+    nav { display:flex; gap:6px; overflow-x:auto; scrollbar-width:none; }
+    nav a { white-space:nowrap; color:var(--muted); text-decoration:none; font-size:.88rem; padding:7px 11px; border-radius:100px; }
+    nav a:hover, nav a:focus-visible { background:var(--green-soft); color:var(--green); }
+    .hero { padding:64px 0 52px; background:radial-gradient(circle at 88% 12%,#d9f1e7 0,transparent 32%),linear-gradient(135deg,#f5faf7,#ecf5f2); border-bottom:1px solid var(--line); }
+    .hero-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:34px; align-items:center; }
+    .eyebrow { color:var(--green); font-weight:800; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; }
+    h1 { font-size:clamp(2rem,4.2vw,3.75rem); letter-spacing:-.045em; line-height:1.23; margin:13px 0 18px; }
+    h2 { font-size:clamp(1.55rem,2.5vw,2.2rem); line-height:1.35; letter-spacing:-.025em; margin:8px 0 12px; }
+    h3 { font-size:1.13rem; line-height:1.45; margin:0 0 8px; }
+    p { margin:0 0 13px; }
+    .lead { font-size:1.12rem; color:#365155; max-width:680px; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:10px; margin-top:23px; }
+    .button { display:inline-flex; align-items:center; justify-content:center; min-height:43px; padding:9px 18px; border-radius:11px; background:var(--green); color:white; font-weight:700; text-decoration:none; }
+    .button.secondary { background:white; color:var(--green); border:1px solid #a7cfc2; }
+    .hero-art { position:relative; min-height:340px; border-radius:26px; background:#0e4f50; overflow:hidden; color:white; box-shadow:var(--shadow); padding:27px; display:flex; flex-direction:column; justify-content:space-between; }
+    .hero-art:before { content:""; position:absolute; width:330px; height:330px; border:1px solid rgba(255,255,255,.22); border-radius:50%; top:-75px; right:-55px; box-shadow:0 0 0 36px rgba(255,255,255,.045),0 0 0 78px rgba(255,255,255,.035); }
+    .hero-art .small { position:relative; color:#c6e6dd; font-size:.84rem; font-weight:700; }
+    .sample-stack { position:relative; display:flex; align-items:end; justify-content:center; gap:16px; min-height:190px; }
+    .sample { display:grid; place-items:center; width:80px; height:116px; border-radius:15px 15px 7px 7px; color:#173a3b; font-size:.82rem; font-weight:800; box-shadow:0 17px 25px rgba(0,0,0,.18); text-align:center; transform:rotate(var(--rot)); }
+    .sample:nth-child(1){ background:linear-gradient(135deg,#bfece2,#71cbb9); --rot:-11deg; }
+    .sample:nth-child(2){ background:linear-gradient(135deg,#d4eafb,#79b6d7); --rot:5deg; height:142px; }
+    .sample:nth-child(3){ background:linear-gradient(135deg,#fde4bb,#e7a66a); --rot:-3deg; height:128px; }
+    .sample:nth-child(4){ background:linear-gradient(135deg,#e4e5e5,#a7b7b9); --rot:10deg; }
+    .hero-art .caption { position:relative; font-size:.88rem; line-height:1.5; color:#e7f6f0; }
+    main section { scroll-margin-top:82px; padding:61px 0; }
+    main section + section { border-top:1px solid var(--line); }
+    .section-intro { max-width:750px; color:var(--muted); margin-bottom:25px; }
+    .overline { display:inline-block; color:var(--green); background:var(--green-soft); border-radius:100px; padding:3px 11px; font-weight:800; font-size:.77rem; letter-spacing:.06em; }
+    .concept-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    .card { background:var(--white); border:1px solid var(--line); border-radius:17px; padding:23px; box-shadow:0 4px 18px rgba(25,60,54,.04); }
+    .card p:last-child { margin-bottom:0; }
+    .card .icon { display:grid; place-items:center; width:42px; height:42px; border-radius:11px; background:var(--green-soft); color:var(--green); font-size:1.3rem; margin-bottom:14px; }
+    .mini-label { color:var(--green); font-weight:800; font-size:.8rem; letter-spacing:.05em; }
+    .plain { color:var(--muted); }
+    .callout { display:flex; gap:13px; align-items:flex-start; background:#fff7e9; border-left:4px solid var(--orange); border-radius:0 13px 13px 0; padding:16px 19px; margin-top:22px; }
+    .callout strong { white-space:nowrap; }
+    .process { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:9px; margin:24px 0 17px; }
+    .process-step { position:relative; min-height:143px; background:white; border:1px solid var(--line); border-radius:14px; padding:17px 13px; }
+    .process-step:not(:last-child):after { content:"→"; position:absolute; right:-13px; top:50%; transform:translateY(-50%); z-index:1; color:var(--green); font-weight:900; background:var(--paper); border-radius:50%; width:18px; text-align:center; }
+    .process-step b { display:block; font-size:1rem; line-height:1.4; margin:4px 0 8px; }
+    .process-step span { font-size:.82rem; color:var(--muted); line-height:1.55; display:block; }
+    .process-step .n { color:var(--green); font-size:.73rem; font-weight:800; }
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .material-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    .material { min-height:255px; }
+    .material .tag { display:inline-block; font-size:.74rem; font-weight:800; color:var(--green); background:var(--green-soft); padding:2px 9px; border-radius:100px; margin-bottom:11px; }
+    .material:nth-child(2) .tag,.material:nth-child(5) .tag { color:var(--blue); background:var(--blue-soft); }
+    .material:nth-child(3) .tag,.material:nth-child(6) .tag { color:#a85b28; background:var(--orange-soft); }
+    .material .example { font-size:.9rem; font-weight:700; margin-top:14px; }
+    .material .question { color:var(--muted); font-size:.89rem; border-top:1px solid var(--line); padding-top:11px; margin-top:12px; }
+    .material-visual { width:100%; height:74px; margin:0 0 11px; display:block; }
+    .illustration { fill:none; stroke:var(--green); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+    .illustration-soft { fill:var(--green-soft); stroke:var(--green); stroke-width:2; }
+    .illustration-warm { fill:var(--orange-soft); stroke:var(--orange); stroke-width:2; }
+    .illustration-blue { fill:var(--blue-soft); stroke:var(--blue); stroke-width:2; }
+    .visual-figure { display:grid; grid-template-columns:minmax(230px,.9fr) 1.1fr; align-items:center; gap:27px; background:white; border:1px solid var(--line); border-radius:20px; padding:24px; margin:25px 0; }
+    .visual-figure svg { display:block; width:100%; height:auto; max-height:280px; }
+    .visual-figure figcaption h3 { margin-bottom:10px; }
+    .visual-figure figcaption p { color:var(--muted); }
+    .figure-legend { display:grid; grid-template-columns:1fr 1fr; gap:9px 15px; list-style:none; padding:0; margin:12px 0 0; }
+    .figure-legend li { display:flex; gap:8px; align-items:start; font-size:.91rem; }
+    .figure-legend b { display:grid; place-items:center; flex:none; width:23px; height:23px; border-radius:50%; background:var(--green-soft); color:var(--green); font-size:.77rem; }
+    .property-strip { display:flex; flex-wrap:wrap; gap:8px; margin:20px 0 0; }
+    .property-strip span { background:white; border:1px solid var(--line); border-radius:100px; padding:6px 12px; font-weight:700; font-size:.84rem; }
+    .subheading { margin:34px 0 8px; }
+    .story-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:10px; margin-top:17px; }
+    .story-tile { position:relative; background:white; border:1px solid var(--line); border-radius:15px; padding:15px 13px; }
+    .story-tile:not(:last-child):after { content:"→"; position:absolute; right:-14px; top:55px; z-index:1; color:var(--green); background:var(--paper); border-radius:50%; font-weight:900; width:20px; text-align:center; }
+    .story-tile svg { width:100%; height:83px; display:block; }
+    .story-tile b { display:block; margin:6px 0 4px; line-height:1.4; }
+    .story-tile p { color:var(--muted); font-size:.85rem; line-height:1.55; margin:0; }
+    .instrument-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:13px; margin-top:18px; }
+    .instrument { background:white; border:1px solid var(--line); border-radius:15px; padding:17px; }
+    .instrument svg { width:100%; height:105px; display:block; margin-bottom:9px; }
+    .instrument .looks { color:var(--green); font-size:.76rem; font-weight:800; }
+    .instrument h3 { margin:3px 0 7px; }
+    .instrument p { color:var(--muted); font-size:.87rem; margin:0; }
+    .comparison { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:15px; }
+    .comparison div { background:var(--blue-soft); border-radius:12px; padding:15px; font-size:.9rem; }
+    .comparison b { display:block; color:#1d607c; }
+    .readout { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin:19px 0 25px; }
+    .readout div { background:white; border:1px solid var(--line); border-radius:13px; padding:15px; }
+    .readout strong { display:block; color:var(--green); }
+    .readout span { display:block; color:var(--muted); font-size:.87rem; }
+    .exhibit-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+    .exhibit { display:flex; flex-direction:column; }
+    .exhibit-top { display:flex; align-items:start; gap:11px; margin-bottom:13px; }
+    .exhibit-symbol { display:grid; place-items:center; flex:none; width:48px; height:48px; border-radius:13px; background:var(--green-soft); font-size:1.45rem; }
+    .exhibit:nth-child(3n+2) .exhibit-symbol { background:var(--blue-soft); }
+    .exhibit:nth-child(3n) .exhibit-symbol { background:var(--orange-soft); }
+    .exhibit h3 { margin:1px 0 0; }
+    .exhibit-kind { display:block; color:var(--green); font-size:.74rem; font-weight:800; line-height:1.3; }
+    .exhibit dl { margin:0; }
+    .exhibit dt { font-size:.76rem; color:var(--green); font-weight:800; margin:9px 0 1px; }
+    .exhibit dd { margin:0; font-size:.9rem; line-height:1.6; }
+    .exhibit .source-link { border-top:1px solid var(--line); padding-top:11px; margin:14px 0 0; font-size:.83rem; margin-top:auto; }
+    .exhibit .source-link a { font-weight:700; }
+    .exhibit-note { background:#fff7e9; border-left:4px solid var(--orange); padding:16px 18px; border-radius:0 12px 12px 0; margin-top:19px; }
+    .deep-flow { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin:21px 0 13px; }
+    .deep-step { position:relative; background:white; border:1px solid var(--line); border-radius:14px; padding:16px; }
+    .deep-step:not(:last-child):after { content:"→"; position:absolute; z-index:1; right:-13px; top:39px; background:var(--paper); width:18px; color:var(--green); font-weight:900; text-align:center; }
+    .deep-step span { display:block; color:var(--green); font-size:.73rem; font-weight:800; }
+    .deep-step b { display:block; margin:3px 0 6px; }
+    .deep-step p { margin:0; color:var(--muted); font-size:.86rem; line-height:1.55; }
+    .deep-pair { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:20px; }
+    .example-line { border-left:3px solid var(--blue); padding-left:13px; margin:15px 0; }
+    .example-line strong { display:block; }
+    .example-line span { color:var(--muted); font-size:.9rem; }
+    .factor-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin:16px 0 13px; }
+    .factor-grid div { background:var(--blue-soft); border-radius:11px; padding:13px; font-size:.87rem; }
+    .factor-grid b { display:block; color:#23627c; }
+    .role-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:11px; margin-top:15px; }
+    .role { background:white; border:1px solid var(--line); border-radius:13px; padding:15px; }
+    .role b { display:block; color:var(--green); margin-bottom:5px; }
+    .role p { color:var(--muted); font-size:.85rem; margin:0; }
+    .role .ask { color:var(--ink); font-weight:700; border-top:1px solid var(--line); padding-top:8px; margin-top:9px; }
+    .quiz-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:15px; }
+    .quiz-grid details { padding:2px 15px; }
+    .quiz-grid summary { line-height:1.5; }
+    .quiz-grid details p { line-height:1.6; }
+    .example-groups { display:grid; gap:13px; }
+    .example-group { padding:0 20px 18px; }
+    .example-group summary { display:flex; align-items:center; gap:12px; padding:16px 0; font-size:1.06rem; }
+    .example-group summary::marker { color:var(--green); }
+    .example-group summary small { margin-left:auto; color:var(--muted); font-size:.75rem; font-weight:700; white-space:nowrap; }
+    .example-group[open] summary { border-bottom:1px solid var(--line); margin-bottom:15px; }
+    .example-figure { margin:0 0 17px; padding:15px; border:1px solid #cfe4df; border-radius:14px; background:linear-gradient(135deg,#f7fcfa,#edf5f6); overflow-x:auto; }
+    .example-figure svg { display:block; width:100%; min-width:590px; height:auto; }
+    .example-figure figcaption { margin:9px 3px 0; color:#45646d; font-size:.83rem; line-height:1.5; }
+    .example-figure .diagram-title { font-size:18px; font-weight:800; fill:#183d47; }
+    .example-figure .diagram-label { font-size:14px; font-weight:700; fill:#183d47; }
+    .example-figure .diagram-note { font-size:12px; fill:#45646d; }
+    .example-figure .diagram-arrow { stroke:#438b85; stroke-width:3; fill:none; stroke-linecap:round; stroke-linejoin:round; }
+    .example-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:11px; }
+    .example-item { border:1px solid var(--line); border-radius:12px; padding:16px; background:#fbfdfc; }
+    .example-item h4 { font-size:.98rem; line-height:1.5; margin:0 0 8px; }
+    .example-item p { color:var(--muted); font-size:.87rem; line-height:1.6; margin:0 0 7px; }
+    .example-item p:last-child { margin:0; }
+    .example-item b { color:var(--ink); }
+    .example-source { margin:14px 0 0; font-size:.81rem; color:var(--muted); }
+    .note { font-size:.88rem; color:var(--muted); margin-top:13px; }
+    .machine-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; }
+    .machine { display:grid; grid-template-columns:36px 1fr; gap:12px; align-items:start; padding:18px 19px; background:white; border:1px solid var(--line); border-radius:14px; }
+    .machine .num { display:grid; place-items:center; width:34px; height:34px; border-radius:9px; background:var(--blue-soft); color:var(--blue); font-weight:800; font-size:.82rem; }
+    .machine h3 { margin-bottom:4px; }
+    .machine p { font-size:.91rem; color:var(--muted); margin:0; }
+    .question-box { background:#0e4f50; color:white; border-radius:22px; padding:26px; }
+    .question-box h3 { color:white; }
+    .question-box p { color:#d3e9e5; }
+    .question-box ol { margin:10px 0 0; padding-left:1.4em; }
+    .question-box li { padding:5px 0; }
+    .question-box li::marker { color:#9fe0c8; font-weight:800; }
+    .glossary { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+    details { background:white; border:1px solid var(--line); border-radius:12px; padding:0 16px; }
+    summary { padding:13px 0; font-weight:800; cursor:pointer; }
+    details p { color:var(--muted); font-size:.91rem; border-top:1px solid var(--line); padding-top:12px; }
+    .case-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:13px; }
+    .case { border-top:4px solid var(--green); }
+    .case:nth-child(2) { border-color:var(--blue); }
+    .case:nth-child(3) { border-color:var(--orange); }
+    .case:nth-child(4) { border-color:#8c78a9; }
+    .case .status { display:inline-block; font-size:.75rem; font-weight:800; color:var(--muted); margin-top:7px; }
+    .sources { font-size:.87rem; color:var(--muted); background:#eaf2ef; padding:29px 0 38px; }
+    .sources ul { margin:8px 0 0; padding-left:1.4em; columns:2; }
+    .sources li { break-inside:avoid; margin-bottom:5px; }
+    .sources h2 { font-size:1.1rem; }
+    .footer { color:var(--muted); font-size:.82rem; padding:14px 0 25px; }
+    @media(max-width:900px){ .hero-grid { grid-template-columns:1fr; } .hero-art { min-height:230px; } .sample-stack { min-height:130px; } .process { grid-template-columns:repeat(3,1fr); } .process-step:nth-child(3):after { display:none; } .material-grid,.exhibit-grid { grid-template-columns:repeat(2,1fr); } .case-grid { grid-template-columns:repeat(2,1fr); } .story-grid { grid-template-columns:repeat(3,1fr); } .story-tile:nth-child(3):after { display:none; } .instrument-grid { grid-template-columns:repeat(2,1fr); } .deep-flow,.factor-grid,.role-grid { grid-template-columns:repeat(2,1fr); } .deep-step:nth-child(2):after { display:none; } }
+    @media(max-width:620px){ .wrap { width:min(100% - 26px,1120px); } .topbar-inner { display:block; padding:9px 0 5px; } .brand { display:block; margin-bottom:4px; } nav { margin:0 -4px; } nav a { padding:5px 9px; } .hero { padding:39px 0; } .hero-art { display:none; } main section { padding:42px 0; } .concept-grid,.material-grid,.machine-list,.two-col,.glossary,.case-grid,.visual-figure,.comparison,.readout,.exhibit-grid,.deep-pair,.quiz-grid,.example-grid { grid-template-columns:1fr; } .process,.instrument-grid,.factor-grid,.role-grid { grid-template-columns:repeat(2,1fr); } .process-step { min-height:125px; } .process-step:nth-child(3):after { display:block; } .process-step:nth-child(2):after,.process-step:nth-child(4):after { display:none; } .story-grid { grid-template-columns:1fr; } .story-tile { display:grid; grid-template-columns:90px 1fr; column-gap:12px; align-items:center; min-height:115px; } .story-tile svg { grid-row:span 2; } .story-tile:not(:last-child):after { content:"↓"; right:auto; left:52px; top:auto; bottom:-16px; } .story-tile:nth-child(3):after { display:block; } .story-tile b { margin:0; } .story-tile p { align-self:start; } .deep-flow { grid-template-columns:1fr; } .deep-step:not(:last-child):after,.deep-step:nth-child(2):after { content:"↓"; right:auto; left:26px; top:auto; bottom:-15px; display:block; } .figure-legend { grid-template-columns:1fr; } .callout { display:block; } .callout strong { display:block; } .sources ul { columns:1; } }
+    @media(max-width:620px){
+      main section { scroll-margin-top:112px; }
+      nav a { display:inline-flex; align-items:center; min-height:44px; padding:8px 12px; }
+      .button { min-height:48px; }
+      .card { padding:18px; }
+      .example-group { padding:0 14px 16px; }
+      .example-group summary { display:block; min-height:48px; }
+      .example-group summary small { display:block; margin:3px 0 0; white-space:normal; }
+      .example-item p { font-size:.96rem; }
+      .example-item h4 { font-size:1.05rem; }
+      .example-source,.sources { font-size:.9rem; }
+      .example-figure { padding:10px; }
+      .example-figure::after { content:"図は横にスクロールできます →"; display:block; margin:7px 3px 0; color:#45646d; font-size:.78rem; }
+    }
+    @media print { .topbar,.hero-actions { display:none; } body { background:white; } .hero { padding:20px 0; } .hero-art { display:none; } main section { padding:20px 0; break-inside:avoid; } .card,.machine,.process-step,details { box-shadow:none; break-inside:avoid; } a { color:var(--ink); } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top">素材産業 <span>はじめてガイド</span></a>
+      <nav aria-label="ページ内メニュー">
+        <a href="#overview">全体像</a><a href="#materials">素材の種類</a><a href="#machines">機械と検査</a><a href="#expected">出展予想</a><a href="#examples">具体例図鑑</a><a href="#deeper">一歩深く</a><a href="#talk">会話の入口</a><a href="#words">用語</a>
+      </nav>
+    </div>
+  </header>
+  <div id="top" class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow">2026 高機能素材 Week · 東京展</div>
+        <h1>素材の展示会を、<br>ゼロから理解する。</h1>
+        <p class="lead">「何を作る材料か」「どう加工するか」「性能をどう確かめるか」。この3つの視点があれば、見慣れない展示も読み解けます。</p>
+        <p class="plain">専門家になるための資料ではなく、今日ブースで会話を始めるための入門です。</p>
+        <div class="hero-actions"><a class="button" href="#overview">まず全体像を見る</a><a class="button secondary" href="#talk">会話の質問へ</a></div>
+      </div>
+      <div class="hero-art" aria-label="フィルム、プラスチック、セラミックス、金属を表す模式図">
+        <div class="small">原料が「使える製品」になるまで</div>
+        <div class="sample-stack" aria-hidden="true"><div class="sample">フィルム</div><div class="sample">樹脂</div><div class="sample">セラミ<br>ックス</div><div class="sample">金属</div></div>
+        <div class="caption">同じ材料でも、配合・加工・検査の方法で性能が変わります。</div>
+      </div>
+    </div>
+  </div>
+  <main>
+    <section id="overview">
+      <div class="wrap">
+        <span class="overline">01 · 最初の地図</span>
+        <h2>「素材」「加工」「検査」を分けて見る</h2>
+        <p class="section-intro">この展示会には、材料を売る会社だけでなく、材料を作る・形にする・つなぐ・調べるための技術を売る会社も集まります。たとえばスマートフォンの部品も、素材を選んで加工し、性能を測ってから使われます。</p>
+        <div class="concept-grid">
+          <div class="card"><div class="icon" aria-hidden="true">◈</div><h3>素材・材料</h3><p>製品を構成する「もの」。樹脂、金属、セラミックス、薄いフィルム、接着剤など。何でできているか、どんな性質を持つかを見る。</p></div>
+          <div class="card"><div class="icon" aria-hidden="true">⚙</div><h3>加工・接合</h3><p>材料を混ぜる、薄く延ばす、型で成形する、表面に塗る、熱を加える、別の部品とつなぐ。材料を「使える形」に変える。</p></div>
+          <div class="card"><div class="icon" aria-hidden="true">⌕</div><h3>検査・測定・分析</h3><p>厚さや強度を測り、表面や内部を観察し、成分を調べる。「狙った性能が本当に出ているか」を確かめる。</p></div>
+        </div>
+        <figure class="visual-figure">
+          <svg viewBox="0 0 340 280" role="img" aria-labelledby="device-title device-desc">
+            <title id="device-title">電子機器に使われる素材の模式図</title>
+            <desc id="device-desc">端末の断面を単純化し、透明フィルム、接着層、金属、樹脂、セラミックスの位置を番号で示す。</desc>
+            <rect x="55" y="17" width="169" height="242" rx="25" fill="#244d52"/>
+            <rect x="64" y="26" width="151" height="224" rx="18" fill="#d4eef0"/>
+            <rect x="71" y="35" width="137" height="172" rx="7" fill="#78b5bf"/>
+            <rect x="71" y="35" width="137" height="8" rx="3" fill="#c5f3e2"/>
+            <rect x="71" y="43" width="137" height="5" fill="#f6c58f"/>
+            <rect x="78" y="70" width="123" height="125" rx="5" fill="#e6f7f3"/>
+            <rect x="93" y="89" width="92" height="58" rx="9" fill="#4d8990"/>
+            <rect x="105" y="100" width="29" height="35" rx="3" fill="#f4ede0"/>
+            <rect x="139" y="100" width="30" height="35" rx="3" fill="#f4ede0"/>
+            <rect x="73" y="215" width="133" height="23" rx="9" fill="#dce7e2"/>
+            <path d="M208 38 H268 M208 47 H248 V66 H268 M169 118 H268 M215 174 H268 M206 226 H268" fill="none" stroke="#6b9591" stroke-width="2"/>
+            <g fill="#0b7467" stroke="white" stroke-width="2"><circle cx="282" cy="38" r="13"/><circle cx="282" cy="66" r="13"/><circle cx="282" cy="118" r="13"/><circle cx="282" cy="174" r="13"/><circle cx="282" cy="226" r="13"/></g>
+            <g fill="white" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle"><text x="282" y="42">1</text><text x="282" y="70">2</text><text x="282" y="122">3</text><text x="282" y="178">4</text><text x="282" y="230">5</text></g>
+          </svg>
+          <figcaption>
+            <span class="mini-label">身近な製品で考える</span>
+            <h3>ひとつの電子機器にも、いろいろな素材</h3>
+            <p>素材の展示会は「完成品の一部分を、より薄く・強く・熱に強くする技術」の集まりとして見ると分かりやすくなります。</p>
+            <ol class="figure-legend"><li><b>1</b>表面を守る薄いフィルム</li><li><b>2</b>層を貼り合わせる接着材</li><li><b>3</b>電子部品に使うセラミックス</li><li><b>4</b>骨格や放熱に使う金属</li><li><b>5</b>形を作り絶縁する樹脂</li></ol>
+            <p class="note">実製品を再現した断面図ではなく、素材の役割を示す模式図です。</p>
+          </figcaption>
+        </figure>
+        <div class="callout"><strong>「高機能」って？</strong><span>単に「高級」という意味ではありません。耐熱性、軽さ、電気の通しやすさ、透明性など、特定の用途に必要な働きを持たせた材料のことです。同じ素材でも、どの性能を重視するかで評価が変わります。</span></div>
+        <div class="property-strip" aria-label="材料の代表的な性能"><span>強い・軽い</span><span>熱に強い／熱を逃がす</span><span>電気を通す／通さない</span><span>透明・光を制御</span><span>薬品や水に強い</span><span>再利用しやすい</span></div>
+        <div class="process" aria-label="素材が製品になるまでの一般的な流れ">
+          <div class="process-step"><div class="n">01</div><b>用途を決める</b><span>何に使い、どんな性能が必要か</span></div>
+          <div class="process-step"><div class="n">02</div><b>材料を選ぶ</b><span>樹脂・金属・粉体などを選択</span></div>
+          <div class="process-step"><div class="n">03</div><b>配合・成形</b><span>混ぜる、延ばす、型に入れる</span></div>
+          <div class="process-step"><div class="n">04</div><b>表面・接合</b><span>塗る、貼る、溶接する</span></div>
+          <div class="process-step"><div class="n">05</div><b>測って確かめる</b><span>厚み・強度・成分などを評価</span></div>
+          <div class="process-step"><div class="n">06</div><b>使う・再利用</b><span>製品化し、回収・再資源化も考える</span></div>
+        </div>
+        <p class="note">これは理解のための模式図です。実際の製造順序や必要な工程は製品によって異なります。</p>
+      </div>
+    </section>
+    <section id="materials">
+      <div class="wrap">
+        <span class="overline">02 · 素材を見分ける</span>
+        <h2>展示会に出る主な素材</h2>
+        <p class="section-intro">「フィルム」は薄い形、「プラスチック」は主に樹脂の材料群、「サステナブル」は環境への配慮という切り口です。分類の基準が違うため、同じ製品が複数の分野にまたがることもあります。</p>
+        <div class="material-grid">
+          <article class="card material"><span class="tag">用途で見る</span><svg class="material-visual" viewBox="0 0 210 74" role="img" aria-label="複数の材料の性能を組み合わせる図"><rect class="illustration-soft" x="67" y="12" width="72" height="50" rx="10"/><path class="illustration" d="M83 29h40M83 38h27M83 47h35M67 22H40m99 7h27M67 52H29m110 1h42"/><circle class="illustration-warm" cx="36" cy="22" r="7"/><circle class="illustration-blue" cx="174" cy="29" r="7"/><circle class="illustration-blue" cx="22" cy="52" r="7"/><circle class="illustration-warm" cx="188" cy="53" r="7"/></svg><h3>高機能マテリアル</h3><p>半導体、電池、自動車などの用途に、狙った性能を持たせた材料の総称。樹脂・金属・セラミックスなどを横断する「大きな傘」です。</p><div class="example">例：熱を逃がす部材、電気を絶縁する部材</div><div class="question">聞くなら：「いちばん重視される性能は何ですか？」</div></article>
+          <article class="card material"><span class="tag">形で見る</span><svg class="material-visual" viewBox="0 0 210 74" role="img" aria-label="薄い層を重ねたフィルムの図"><path class="illustration-blue" d="M29 24l148-13 8 10L38 34z"/><path class="illustration-soft" d="M29 38l148-13 8 10L38 48z"/><path class="illustration-warm" d="M29 52l148-13 8 10L38 62z"/></svg><h3>フィルム</h3><p>薄いシート状の材料。透明性、バリア性、絶縁性、表面の機能などを持たせます。樹脂製が多く、薄く作る・塗る・重ねる工程が重要です。</p><div class="example">例：電池の部材、保護フィルム、包装材</div><div class="question">聞くなら：「厚みや表面のばらつきはどう見ていますか？」</div></article>
+          <article class="card material"><span class="tag">材料で見る</span><svg class="material-visual" viewBox="0 0 210 74" role="img" aria-label="樹脂の粒から成形品を作る図"><g class="illustration-warm"><circle cx="30" cy="32" r="8"/><circle cx="50" cy="49" r="8"/><circle cx="60" cy="22" r="8"/><circle cx="78" cy="46" r="8"/></g><path class="illustration" d="M100 36h35m-9-9 9 9-9 9"/><path class="illustration-blue" d="M150 16h36v40h-12V44h-12v12h-12z"/></svg><h3>プラスチック・樹脂</h3><p>形を作りやすい高分子材料。樹脂は材料としての呼び方、プラスチックは成形された製品や材料群を指すことが多いです。添加剤や成形条件で性質が変わります。</p><div class="example">例：コネクタ、自動車部品、容器</div><div class="question">聞くなら：「材料の配合と成形条件、どちらが性能に効きますか？」</div></article>
+          <article class="card material"><span class="tag">材料で見る</span><svg class="material-visual" viewBox="0 0 210 74" role="img" aria-label="金属の板と巻いた線材の図"><path class="illustration-blue" d="M20 22l104-9 12 12-103 9zM33 34l103-9v25L33 59z"/><path class="illustration" d="M159 18c31 1 30 37 8 39-20 2-22-25-4-27 14-2 14 14 5 15"/></svg><h3>金属</h3><p>強度、導電性、熱の伝わりやすさなどを活かす材料。鉄、アルミ、銅や、それらを組み合わせた合金があります。切る、曲げる、削る、溶接するなどの加工とセットで考えます。</p><div class="example">例：機械部品、放熱部材、電池材料</div><div class="question">聞くなら：「材質や加工方法は何で決まりますか？」</div></article>
+          <article class="card material"><span class="tag">材料で見る</span><svg class="material-visual" viewBox="0 0 210 74" role="img" aria-label="粉末を焼き固めてセラミックスの部品にする図"><g fill="#eac18f"><circle cx="25" cy="24" r="4"/><circle cx="39" cy="33" r="5"/><circle cx="57" cy="23" r="4"/><circle cx="71" cy="43" r="5"/><circle cx="27" cy="51" r="5"/><circle cx="55" cy="54" r="4"/></g><path class="illustration" d="M89 36h37m-10-9 10 9-10 9"/><rect class="illustration-warm" x="147" y="19" width="43" height="38" rx="7"/><path class="illustration" d="M157 31h23M157 41h23"/></svg><h3>セラミックス</h3><p>金属ではない無機材料。粉を成形して高温で焼き固めるものが代表的です。硬さ、耐熱性、絶縁性などを活かし、電子部品にも使われます。</p><div class="example">例：絶縁部品、工業炉の部材、基板</div><div class="question">聞くなら：「焼く前後で寸法や品質の管理は難しいですか？」</div></article>
+          <article class="card material"><span class="tag">環境で見る</span><svg class="material-visual" viewBox="0 0 210 74" role="img" aria-label="材料を回収して再利用する循環の図"><circle class="illustration-soft" cx="105" cy="37" r="20"/><path class="illustration" d="M107 23c18-22 48-15 52 8m-1-10 1 10-10-4M104 51C86 73 57 66 51 43m1 10-1-10 10 4"/><path class="illustration" d="M97 41c0-13 9-18 16-17 1 11-4 18-16 17z"/></svg><h3>サステナブルマテリアル</h3><p>原料調達、製造、使用、回収までの環境負荷を考えて選ぶ材料。再生材や植物由来材料などがあります。「環境に良い」は、何をどう比較したかまで確認します。</p><div class="example">例：再生プラスチック、再生金属、バイオ由来素材</div><div class="question">聞くなら：「再生材でも品質を安定させる工夫は何ですか？」</div></article>
+        </div>
+        <p class="note">ほかに塗料、接着剤、ガラス、繊維、複合材、原料・添加剤なども展示されています。</p>
+        <h3 class="subheading">具体例：機能性フィルムは、どう作られる？</h3>
+        <p class="section-intro">「材料」と「機械」が同じ展示会に並ぶ理由を、フィルム製造の一例で見てみましょう。</p>
+        <div class="story-grid" role="group" aria-label="フィルム製造の模式的な流れ">
+          <div class="story-tile"><svg viewBox="0 0 100 83" role="img" aria-label="樹脂の粒"><g fill="#f0b782" stroke="#c87e3f" stroke-width="2"><circle cx="30" cy="28" r="8"/><circle cx="52" cy="24" r="8"/><circle cx="71" cy="35" r="8"/><circle cx="37" cy="53" r="8"/><circle cx="61" cy="55" r="8"/></g></svg><b>原料を選ぶ</b><p>樹脂や添加剤を選び、必要な性能を狙う。</p></div>
+          <div class="story-tile"><svg viewBox="0 0 100 83" role="img" aria-label="押し出して薄いシートにする装置"><rect x="13" y="25" width="50" height="30" rx="5" fill="#d8efea" stroke="#0b7467" stroke-width="2"/><path d="M62 37h25M62 43h25M15 63h45" fill="none" stroke="#0b7467" stroke-width="3"/><circle cx="30" cy="64" r="6" fill="#f2bd87"/><circle cx="52" cy="64" r="6" fill="#f2bd87"/></svg><b>薄く成形する</b><p>溶かした材料を押し出すなどしてシートにする。</p></div>
+          <div class="story-tile"><svg viewBox="0 0 100 83" role="img" aria-label="フィルム表面へ液を塗る装置"><path d="M10 55h80M10 61h80" stroke="#327593" stroke-width="3"/><path d="M35 15h30l-7 28H42z" fill="#e6f3f8" stroke="#327593" stroke-width="2"/><path d="M42 50h16" stroke="#e58644" stroke-width="6" stroke-linecap="round"/></svg><b>表面に塗る</b><p>液を薄く塗り、表面に別の働きを加える。</p></div>
+          <div class="story-tile"><svg viewBox="0 0 100 83" role="img" aria-label="乾燥炉を通るフィルム"><rect x="14" y="18" width="72" height="46" rx="6" fill="#fff0e4" stroke="#e58644" stroke-width="2"/><path d="M6 48h88M26 29v10m14-10v10m14-10v10m14-10v10" stroke="#e58644" stroke-width="2"/></svg><b>乾燥・硬化する</b><p>水分や溶剤を飛ばす、または材料を固める。</p></div>
+          <div class="story-tile"><svg viewBox="0 0 100 83" role="img" aria-label="センサーでフィルムの厚みを測る"><path d="M9 52h82M9 58h82" stroke="#327593" stroke-width="3"/><rect x="38" y="15" width="25" height="21" rx="4" fill="#e1f2ec" stroke="#0b7467" stroke-width="2"/><path d="M50 36v13M36 64h29" stroke="#0b7467" stroke-width="2" stroke-dasharray="4 3"/></svg><b>品質を測る</b><p>厚み、傷、表面の状態などを検査する。</p></div>
+        </div>
+        <p class="note">製品によって原料・工程・順序は変わります。この図は「素材、製造装置、検査装置の関係」を示すための例です。</p>
+      </div>
+    </section>
+    <section id="machines">
+      <div class="wrap">
+        <span class="overline">03 · 装置と技術</span>
+        <h2>機械は「何を変えるか」で理解する</h2>
+        <p class="section-intro">機械の名前を暗記する必要はありません。「材料の形・表面・つながり・中身のどれを変える／調べる装置か」と考えると会話が追いやすくなります。</p>
+        <div class="machine-list">
+          <div class="machine"><span class="num">01</span><div><h3>混合・配合</h3><p>原料や添加剤を混ぜ、必要な性質を狙う。混ぜ方や比率の違いが性能差につながる。</p></div></div>
+          <div class="machine"><span class="num">02</span><div><h3>成形・加工</h3><p>射出成形機は溶かした樹脂を型へ流し込む。押出機は材料を連続して押し出し、シートや管などを作る。</p></div></div>
+          <div class="machine"><span class="num">03</span><div><h3>塗工・表面処理</h3><p>フィルムや部品の表面に薄く塗る、表面を改質する。厚みやムラが品質に直結する。</p></div></div>
+          <div class="machine"><span class="num">04</span><div><h3>加熱・乾燥・焼成</h3><p>溶剤や水分を飛ばす、樹脂を硬化させる、セラミックスを焼き固める。温度と時間の管理が重要。</p></div></div>
+          <div class="machine"><span class="num">05</span><div><h3>接着・接合</h3><p>材料同士をつなぐ。接着剤、溶接、熱や超音波による接合などがあり、強さや耐久性が問われる。</p></div></div>
+          <div class="machine"><span class="num">06</span><div><h3>検査・測定・分析</h3><p>寸法・厚み・傷・強度・成分を確かめる。顕微鏡は形、元素分析は成分、引張試験は強さを見る。</p></div></div>
+        </div>
+        <h3 class="subheading">検査・測定・分析機器は、何を見ている？</h3>
+        <p class="section-intro">機器名より「答えたい問い」を先に見ると理解しやすくなります。同じ製品でも、見た目、厚み、強さ、成分を別々に確かめます。</p>
+        <div class="instrument-grid">
+          <div class="instrument"><svg viewBox="0 0 130 105" role="img" aria-label="顕微鏡で表面を拡大して見る図"><rect x="17" y="81" width="96" height="8" rx="4" fill="#b9d9d5"/><path d="M34 78h60M47 73l13-17m17-27 14 15-25 26-14-15z" fill="#e1f2ec" stroke="#0b7467" stroke-width="4" stroke-linejoin="round"/><circle cx="87" cy="38" r="8" fill="#e6f3f8" stroke="#327593" stroke-width="3"/><path d="M36 31c14-17 29-18 42-4" fill="none" stroke="#327593" stroke-width="3"/></svg><span class="looks">見た目・表面</span><h3>顕微鏡</h3><p>傷、異物、粒子、表面の細かな形を拡大して見る。</p></div>
+          <div class="instrument"><svg viewBox="0 0 130 105" role="img" aria-label="薄い膜の上下から厚みを測る図"><path d="M18 48h94M18 59h94" stroke="#327593" stroke-width="5"/><path d="M65 17v23m0 29v21m-8-62 8-11 8 11m-16 49 8 12 8-12" fill="none" stroke="#0b7467" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M86 47v13m-5-13 5-6 5 6m-10 13 5 6 5-6" fill="none" stroke="#e58644" stroke-width="2"/></svg><span class="looks">寸法・ばらつき</span><h3>厚み計</h3><p>フィルムや塗膜の厚さ、場所によるムラを数値で調べる。</p></div>
+          <div class="instrument"><svg viewBox="0 0 130 105" role="img" aria-label="試験片を上下に引っ張る図"><rect x="41" y="12" width="49" height="16" rx="3" fill="#d8efea" stroke="#0b7467" stroke-width="2"/><rect x="41" y="76" width="49" height="16" rx="3" fill="#d8efea" stroke="#0b7467" stroke-width="2"/><path d="M54 28v15c0 6 6 6 6 12s-6 6-6 11v10m23-48v15c0 6-6 6-6 12s6 6 6 11v10" fill="none" stroke="#327593" stroke-width="3"/><path d="M108 31V11m-6 7 6-7 6 7M108 74v21m-6-7 6 7 6-7" fill="none" stroke="#e58644" stroke-width="2"/></svg><span class="looks">強さ・伸び</span><h3>引張試験機</h3><p>試験片を引っ張り、どれくらいの力に耐え、伸びるかを見る。</p></div>
+          <div class="instrument"><svg viewBox="0 0 130 105" role="img" aria-label="材料の成分を表す山形のスペクトル図"><rect x="20" y="16" width="90" height="72" rx="7" fill="#e6f3f8" stroke="#327593" stroke-width="2"/><path d="M28 73h75M32 69l10-4 9-30 8 33 12-7 7-23 7 30 12-5" fill="none" stroke="#0b7467" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="51" cy="35" r="4" fill="#e58644"/><circle cx="78" cy="38" r="4" fill="#e58644"/></svg><span class="looks">何でできているか</span><h3>元素分析装置</h3><p>材料に含まれる元素を調べ、異物や配合の確認に使う。</p></div>
+        </div>
+        <div class="callout"><strong>3つの違い</strong><span><b>検査</b>＝合格かどうかを見る。<b>測定</b>＝厚みなどを数値にする。<b>分析</b>＝成分や原因を詳しく調べる。現場では重なって使われます。</span></div>
+      </div>
+    </section>
+    <section id="expected">
+      <div class="wrap">
+        <span class="overline">04 · 会場で見かけそうなもの</span>
+        <h2>2026年の出展情報から、展示物を予想する</h2>
+        <p class="section-intro">公式の出展社・製品ページには、材料のサンプルから装置、ソフトウェアまで掲載されています。下の「公式掲載例」は登録情報で確認したもの。「こう見えるかも」は予想なので、現物・実演の有無はブースで確かめてください。</p>
+        <div class="readout" aria-label="展示物の見分け方">
+          <div><strong>手に取れるもの</strong><span>シート、粒、粉、板、成形品なら「素材・部材」の展示</span></div>
+          <div><strong>動くもの</strong><span>ノズル、炉、粉砕機、測定器なら「作る・調べる装置」の展示</span></div>
+          <div><strong>画面で見せるもの</strong><span>グラフや検索画面なら「データ・設計支援」の展示</span></div>
+        </div>
+        <div class="exhibit-grid">
+          <article class="card exhibit"><div class="exhibit-top"><span class="exhibit-symbol" aria-hidden="true">▤</span><div><span class="exhibit-kind">フィルム・接着</span><h3>粘着シートやテープ</h3></div></div><dl><dt>こう見えるかも</dt><dd>薄いシート片やロール、貼って剥がす実演。</dd><dt>何を売る？</dt><dd>貼り付ける強さや、必要なときに剥がせる性質。</dd><dt>聞ける一言</dt><dd>「貼った後に剥がせることが重要なのは、どんな工程ですか？」</dd></dl><p class="source-link">公式掲載例：<a href="https://www.material-expo.jp/tokyo/ja-jp/search/2026mwt0930/products/details.exh-4fd0e098-b818-4ff6-bc3a-f9c867a4c646.%E3%83%AA%E3%83%AF%E3%83%BC%E3%82%AF%E5%AF%BE%E5%BF%9C%E3%82%B7%E3%83%AA%E3%83%BC%E3%82%BA%20reworkable%20series.pro-775c3c6a-1841-48c7-8c74-01c81d30d647.html" target="_blank" rel="noopener noreferrer">Crown New Materialsのリワーク対応シリーズ</a></p></article>
+          <article class="card exhibit"><div class="exhibit-top"><span class="exhibit-symbol" aria-hidden="true">◼</span><div><span class="exhibit-kind">樹脂・サステナブル</span><h3>樹脂粒や成形品</h3></div></div><dl><dt>こう見えるかも</dt><dd>小さな粒（ペレット）と、容器・トレーなどの完成サンプル。</dd><dt>何を売る？</dt><dd>材料の配合や成形方法を変えた製品。使用する樹脂の量を減らす提案もあります。</dd><dt>聞ける一言</dt><dd>「配合を変えると、成形条件も変わりますか？」</dd></dl><p class="source-link">公式掲載例：<a href="https://www.material-expo.jp/tokyo/ja-jp/search/2026mwt0930/products/details.exh-190ef99f-4182-4f3e-8ca9-e76d60d15f71.%E3%82%A2%E3%82%A4%E3%83%96%E3%83%AA%E3%83%83%E3%83%89%E6%88%90%E5%BD%A2%E5%93%81.pro-35719522-0435-415b-a786-c957c294966b.html" target="_blank" rel="noopener noreferrer">AIPAのアイブリッド成形品</a></p></article>
+          <article class="card exhibit"><div class="exhibit-top"><span class="exhibit-symbol" aria-hidden="true">●</span><div><span class="exhibit-kind">金属材料</span><h3>銅などの金属粉末</h3></div></div><dl><dt>こう見えるかも</dt><dd>小瓶に入った粉、拡大写真、粉から作った部品。</dd><dt>何を売る？</dt><dd>粒の大きさや成分を管理した粉末材料。</dd><dt>聞ける一言</dt><dd>「この粉は、何に使うことを想定していますか？」</dd></dl><p class="source-link">公式掲載例：<a href="https://www.material-expo.jp/tokyo/ja-jp/search/2026mwt0930/directory/details.org-6c7e3e32-d360-4e96-a2a9-ec93ee93c47c.html" target="_blank" rel="noopener noreferrer">STEPPE METAL POWDERの銅粉末</a></p></article>
+          <article class="card exhibit"><div class="exhibit-top"><span class="exhibit-symbol" aria-hidden="true">▦</span><div><span class="exhibit-kind">セラミックス</span><h3>硬い部品や蜂の巣状の部材</h3></div></div><dl><dt>こう見えるかも</dt><dd>白や黒の小さな部品、粉、細かな穴が並ぶハニカム構造。</dd><dt>何を売る？</dt><dd>硬さ、耐熱性、電気的な性質を狙って成形・焼成した部材。</dd><dt>聞ける一言</dt><dd>「成形と焼成のどちらで寸法管理が難しいですか？」</dd></dl><p class="source-link">分野からの予想：<a href="https://www.material-expo.jp/tokyo/ja-jp/visit/cera.html" target="_blank" rel="noopener noreferrer">高機能セラミックス展の案内</a></p></article>
+          <article class="card exhibit"><div class="exhibit-top"><span class="exhibit-symbol" aria-hidden="true">↘</span><div><span class="exhibit-kind">塗工・接着</span><h3>液を薄く塗るノズル</h3></div></div><dl><dt>こう見えるかも</dt><dd>細いノズル、塗布の実演、均一な膜の比較サンプル。</dd><dt>何を売る？</dt><dd>必要な場所へ、必要な量だけ、安定して液を塗る装置。</dd><dt>聞ける一言</dt><dd>「塗布量のムラは、どう測って調整しますか？」</dd></dl><p class="source-link">公式掲載例：<a href="https://www.material-expo.jp/tokyo/ja-jp/search/2026mwt0930/directory/details.%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%83%AA%E3%83%B3%E3%82%B0%E3%83%A9%E3%83%9C.org-d3b85b12-2778-4402-bd0b-db9d448020f2.html" target="_blank" rel="noopener noreferrer">エンジニアリング・ラボの塗布装置</a></p></article>
+          <article class="card exhibit"><div class="exhibit-top"><span class="exhibit-symbol" aria-hidden="true">♨</span><div><span class="exhibit-kind">乾燥・熱処理</span><h3>乾燥機や工業炉</h3></div></div><dl><dt>こう見えるかも</dt><dd>装置本体、模型、工程写真や動画。大きな設備はパネル展示の場合も。</dd><dt>何を売る？</dt><dd>水分を飛ばす、熱で材料を変える、粉を焼き固める技術。</dd><dt>聞ける一言</dt><dd>「温度や乾燥時間は、製品ごとにどう決めますか？」</dd></dl><p class="source-link">公式掲載例：<a href="https://www.material-expo.jp/tokyo/ja-jp/search/2026mwt0930/directory/details.chuo%20kakohki%20co%20ltd.org-a1877dd0-b9e9-470b-92cf-5ab608603366.html" target="_blank" rel="noopener noreferrer">中央化工機の乾燥技術</a></p></article>
+          <article class="card exhibit"><div class="exhibit-top"><span class="exhibit-symbol" aria-hidden="true">↺</span><div><span class="exhibit-kind">リサイクル技術</span><h3>破砕機・再生ペレット</h3></div></div><dl><dt>こう見えるかも</dt><dd>材料を砕く装置の写真、回収前後のサンプル、再生した粒。</dd><dt>何を売る？</dt><dd>使用済み材料を分け、洗い、再び原料として使える形にする設備。</dd><dt>聞ける一言</dt><dd>「再生材の品質差は、どの段階で調べますか？」</dd></dl><p class="source-link">公式掲載例：<a href="https://www.material-expo.jp/tokyo/ja-jp/search/2026mwt0930/directory/details.%E3%83%89%E3%83%8A%E3%82%A6%E5%95%86%E4%BA%8B%20%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE.org-1fddd881-92cd-4896-865f-8e0de50ee832.html" target="_blank" rel="noopener noreferrer">ドナウ商事の再生装置</a></p></article>
+          <article class="card exhibit"><div class="exhibit-top"><span class="exhibit-symbol" aria-hidden="true">⌕</span><div><span class="exhibit-kind">検査・測定</span><h3>顕微鏡や厚み計</h3></div></div><dl><dt>こう見えるかも</dt><dd>測定器とモニター、拡大画像や厚みのグラフ。</dd><dt>何を売る？</dt><dd>見えない傷、厚みのムラ、強度や成分を数値で確かめる道具。</dd><dt>聞ける一言</dt><dd>「全品を測りますか、それとも一部を抜き取りますか？」</dd></dl><p class="source-link">分野からの予想：<a href="https://www.material-expo.jp/hub/ja-jp/exhibit/analysis.html" target="_blank" rel="noopener noreferrer">材料分析・評価 Worldの案内</a></p></article>
+          <article class="card exhibit"><div class="exhibit-top"><span class="exhibit-symbol" aria-hidden="true">▣</span><div><span class="exhibit-kind">マテリアルDX</span><h3>材料開発の画面デモ</h3></div></div><dl><dt>こう見えるかも</dt><dd>実験記録、材料候補、予測値などを示すモニター画面。</dd><dt>何を売る？</dt><dd>研究開発の情報を整理し、次の実験や判断を支援するソフト。</dd><dt>聞ける一言</dt><dd>「実験条件と測定結果は、今どう紐付けていますか？」</dd></dl><p class="source-link">公式掲載例：<a href="https://www.material-expo.jp/tokyo/ja-jp/search/2026mwt0930/directory/details.org-3ee7e15d-266e-49f3-b1f3-e1cd8159f1f6.html" target="_blank" rel="noopener noreferrer">QunaSysの研究開発AIデモ</a></p></article>
+        </div>
+        <p class="exhibit-note"><b>当日の見方：</b>出展社・製品の登録情報は「そのブースで何が見られるか」の手がかりです。展示物、実演、担当者、配置は変わることがあります。公式一覧の掲載を、現物を見た事実として扱わないようにしましょう。</p>
+        <p class="note">同時開催エリアでは、レーザー・光計測、電子ディスプレー、乾燥技術、リサイクル設備も見かける可能性があります。<a href="https://www.material-expo.jp/tokyo/ja-jp/about.html" target="_blank" rel="noopener noreferrer">公式の展示会概要</a>で各展示会の位置付けを確認できます。</p>
+      </div>
+    </section>
+    <section id="examples">
+      <div class="wrap">
+        <span class="overline">05 · 製品から学ぶ</span>
+        <h2>身近な製品でわかる、24の具体例</h2>
+        <p class="section-intro">カテゴリを開き、まず模式図で形や流れを見てから「どこで使う → 何を作る・測る → 何を聞く」の順で読めます。以下は技術を理解するための用途例で、今年これらの製品がすべて出展されるという意味ではありません。実際の出展情報は前の節の公式リンクで確認できます。</p>
+        <div class="example-groups">
+          <details class="card example-group" open>
+            <summary><span>📱 電子機器・半導体</span><small>図と4例を開く／閉じる</small></summary>
+            <figure class="example-figure">
+              <svg viewBox="0 0 900 230" role="img" aria-labelledby="diagram-electronics-title">
+                <title id="diagram-electronics-title">スマートフォン内部の小さなコンデンサを拡大した模式図。セラミックスと金属電極が交互に重なる。</title>
+                <text x="20" y="26" class="diagram-title">スマホの中の小さな部品を拡大すると</text>
+                <rect x="33" y="45" width="136" height="165" rx="19" fill="#dceceb" stroke="#246f73" stroke-width="4"/>
+                <rect x="47" y="61" width="108" height="126" rx="8" fill="#fcffff"/>
+                <rect x="81" y="95" width="26" height="18" rx="3" fill="#e59c67" stroke="#b96a3a" stroke-width="2"/>
+                <circle cx="119" cy="132" r="8" fill="#398c8a"/><circle cx="80" cy="148" r="6" fill="#398c8a"/>
+                <text x="52" y="202" class="diagram-label">スマートフォン</text>
+                <path d="M182 119H251m-12-10 12 10-12 10" class="diagram-arrow"/>
+                <text x="198" y="100" class="diagram-note">一部を拡大</text>
+                <rect x="277" y="60" width="275" height="130" rx="12" fill="#fff" stroke="#b8d7d1" stroke-width="2"/>
+                <rect x="303" y="80" width="219" height="16" rx="3" fill="#d1e7df"/>
+                <rect x="303" y="97" width="183" height="13" rx="3" fill="#e7a774"/>
+                <rect x="303" y="111" width="219" height="16" rx="3" fill="#d1e7df"/>
+                <rect x="340" y="128" width="182" height="13" rx="3" fill="#e7a774"/>
+                <rect x="303" y="142" width="219" height="16" rx="3" fill="#d1e7df"/>
+                <text x="326" y="181" class="diagram-label">交互に重ねた小さな部品</text>
+                <path d="M568 100h42" class="diagram-arrow"/><path d="m599 91 12 9-12 9" class="diagram-arrow"/>
+                <rect x="630" y="64" width="238" height="123" rx="12" fill="#fff" stroke="#b8d7d1" stroke-width="2"/>
+                <rect x="648" y="84" width="19" height="15" rx="3" fill="#d1e7df"/><text x="678" y="97" class="diagram-label">セラミックス：絶縁層</text>
+                <rect x="648" y="117" width="19" height="15" rx="3" fill="#e7a774"/><text x="678" y="130" class="diagram-label">金属電極：電気につながる</text>
+                <text x="648" y="164" class="diagram-note">層の厚みや欠陥が品質に関わる</text>
+              </svg>
+              <figcaption>模式図：積層セラミックコンデンサの断面イメージ。色と層の数は説明用です。</figcaption>
+            </figure>
+            <div class="example-grid">
+              <article class="example-item"><h4>スマホの積層セラミックコンデンサ</h4><p><b>何に使う：</b>電気を一時的に蓄えたり、回路のノイズを抑えたりする小さな部品。</p><p><b>会場で見るなら：</b>セラミックスの薄い層と金属電極、積層や焼成、微細な欠陥の検査。</p><p><b>聞くなら：</b>「小型化すると、どの工程のばらつきが難しくなりますか？」</p></article>
+              <article class="example-item"><h4>半導体用の単結晶・ウエハー</h4><p><b>何に使う：</b>半導体を作る土台。結晶を育て、薄く切り、磨いて使う。</p><p><b>会場で見るなら：</b>結晶育成装置、切断・研磨、直径や表面の測定。</p><p><b>聞くなら：</b>「育成中の条件と、完成後の品質はどう結び付けていますか？」</p></article>
+              <article class="example-item"><h4>電子部品の放熱シート</h4><p><b>何に使う：</b>発熱する部品と筐体のすき間を埋め、熱を逃がす。</p><p><b>会場で見るなら：</b>樹脂と熱を通しやすい粒子の配合、柔らかさ、熱特性の測定。</p><p><b>聞くなら：</b>「熱の通りやすさと、貼りやすさはどう両立させますか？」</p></article>
+              <article class="example-item"><h4>画面を守る透明フィルム</h4><p><b>何に使う：</b>表示面を傷や汚れから守り、見やすさも保つ。</p><p><b>会場で見るなら：</b>透明な基材、表面コーティング、透過率・傷の測定。</p><p><b>聞くなら：</b>「透明さと傷つきにくさは、何で評価していますか？」</p></article>
+            </div>
+            <p class="example-source">参考：<a href="https://corporate.murata.com/ja-jp/company/business/capacitor" target="_blank" rel="noopener noreferrer">村田製作所のコンデンサ解説</a>。ウエハーの品質予測は下の Logos Tech 事例にもつながります。</p>
+          </details>
+          <details class="card example-group">
+            <summary><span>🔋 電池・自動車</span><small>図と4例を開く／閉じる</small></summary>
+            <figure class="example-figure">
+              <svg viewBox="0 0 900 230" role="img" aria-labelledby="diagram-battery-title">
+                <title id="diagram-battery-title">電池の正極と負極の間に多孔質のセパレータがあり、電極の接触を防ぎつつリチウムイオンが通る模式図。</title>
+                <text x="20" y="26" class="diagram-title">電池の中：間にある薄い膜は何をする？</text>
+                <rect x="66" y="68" width="165" height="108" rx="9" fill="#e9b777" stroke="#b77b37" stroke-width="3"/>
+                <text x="119" y="126" class="diagram-title">正極</text>
+                <rect x="364" y="57" width="155" height="130" rx="8" fill="#d8eee9" stroke="#277d73" stroke-width="3"/>
+                <circle cx="391" cy="83" r="7" fill="#fff"/><circle cx="456" cy="83" r="7" fill="#fff"/><circle cx="421" cy="117" r="7" fill="#fff"/><circle cx="481" cy="139" r="7" fill="#fff"/><circle cx="389" cy="159" r="7" fill="#fff"/>
+                <text x="379" y="206" class="diagram-label">セパレータ（多孔質フィルム）</text>
+                <rect x="655" y="68" width="165" height="108" rx="9" fill="#a8cbdc" stroke="#4d8299" stroke-width="3"/>
+                <text x="710" y="126" class="diagram-title">負極</text>
+                <path d="M244 114h104m-12-10 12 10-12 10M536 114h105m-12-10 12 10-12 10" class="diagram-arrow"/>
+                <circle cx="294" cy="114" r="12" fill="#fff" stroke="#277d73" stroke-width="2"/><text x="281" y="119" class="diagram-note">Li⁺</text>
+                <circle cx="586" cy="114" r="12" fill="#fff" stroke="#277d73" stroke-width="2"/><text x="573" y="119" class="diagram-note">Li⁺</text>
+                <text x="63" y="47" class="diagram-note">電極同士は直接触れさせない</text>
+                <text x="607" y="47" class="diagram-note">イオンは膜の穴を通る</text>
+              </svg>
+              <figcaption>模式図：充放電時、リチウムイオンは膜を通れます。矢印は「通れること」の説明で、流れる向きは状態によって変わります。</figcaption>
+            </figure>
+            <div class="example-grid">
+              <article class="example-item"><h4>電池のセパレータ</h4><p><b>何に使う：</b>正極と負極の接触を防ぎつつ、リチウムイオンが通れるようにする多孔質フィルム。</p><p><b>会場で見るなら：</b>薄い膜、微細な穴、膜厚・強度・耐熱性の測定。</p><p><b>聞くなら：</b>「穴の状態と強度は、製造中にどう管理しますか？」</p></article>
+              <article class="example-item"><h4>電池の電極シート</h4><p><b>何に使う：</b>金属箔へ活物質を塗り、乾かして電極にする。</p><p><b>会場で見るなら：</b>塗工機、乾燥機、塗膜の厚み計や欠陥検査。</p><p><b>聞くなら：</b>「塗る量と乾燥条件の記録は、検査結果と紐付いていますか？」</p></article>
+              <article class="example-item"><h4>銅・アルミの通電部材の接合</h4><p><b>何に使う：</b>電気を流す金属部品を安定してつなぐ。</p><p><b>会場で見るなら：</b>超音波やレーザーによる接合のサンプル、接合強度の試験。</p><p><b>聞くなら：</b>「接合の良し悪しは、どの測定値で判断しますか？」</p></article>
+              <article class="example-item"><h4>車体の軽量な複合材</h4><p><b>何に使う：</b>樹脂と繊維を組み合わせ、強さを保ちながら部品を軽くする。</p><p><b>会場で見るなら：</b>GFRP・CFRPの板や成形品、繊維の並び、強度試験。</p><p><b>聞くなら：</b>「金属から置き換えるとき、何を比較しますか？」</p></article>
+            </div>
+            <p class="example-source">参考：<a href="https://www.asahi-kasei.com/jp/services-products/energyinfrastructure" target="_blank" rel="noopener noreferrer">旭化成の電池セパレータ解説</a>、<a href="https://www.material-expo.jp/tokyo/ja-jp/search/2026mwt0930/products.html?page=16" target="_blank" rel="noopener noreferrer">公式掲載の接合・複合材例</a>。</p>
+          </details>
+          <details class="card example-group">
+            <summary><span>🍱 食品・日用品</span><small>図と4例を開く／閉じる</small></summary>
+            <figure class="example-figure">
+              <svg viewBox="0 0 900 230" role="img" aria-labelledby="diagram-food-title">
+                <title id="diagram-food-title">食品包装フィルムの複数の層が、外から来る酸素や水蒸気を通しにくくして食品を守る断面図。</title>
+                <text x="20" y="26" class="diagram-title">食品包装：薄いフィルムにも役割の違う層がある</text>
+                <rect x="35" y="49" width="827" height="157" rx="15" fill="#fff" stroke="#b8d7d1" stroke-width="2"/>
+                <text x="66" y="76" class="diagram-label">包装の外</text>
+                <circle cx="105" cy="111" r="18" fill="#e7a774"/><text x="95" y="116" class="diagram-note">O₂</text>
+                <circle cx="103" cy="158" r="28" fill="#c1dce9"/><text x="78" y="163" class="diagram-note">水蒸気</text>
+                <path d="M145 110h130m-12-10 12 10-12 10M145 157h130m-12-10 12 10-12 10" class="diagram-arrow"/>
+                <path d="M286 96v28m7-28v28M286 143v28m7-28v28" stroke="#bd6f44" stroke-width="3"/>
+                <rect x="318" y="73" width="25" height="112" rx="3" fill="#dcebed"/>
+                <rect x="348" y="73" width="19" height="112" rx="3" fill="#e8b87c"/>
+                <rect x="372" y="73" width="25" height="112" rx="3" fill="#d7ece2"/>
+                <text x="315" y="200" class="diagram-note">複数の層</text>
+                <text x="419" y="105" class="diagram-label">通りにくくする</text>
+                <path d="M402 129h113m-11-9 11 9-11 9" class="diagram-arrow"/>
+                <rect x="540" y="79" width="273" height="94" rx="12" fill="#fff3dc" stroke="#e1b366" stroke-width="2"/>
+                <text x="600" y="134" class="diagram-title">中の食品を守る</text>
+              </svg>
+              <figcaption>模式図：層の組み合わせで、酸素・水蒸気の通しにくさや密封性を設計します。製品によって層の数と役割は異なります。</figcaption>
+            </figure>
+            <div class="example-grid">
+              <article class="example-item"><h4>食品包装のバリアフィルム</h4><p><b>何に使う：</b>酸素や水蒸気が中へ入りにくくして、中身を守る。</p><p><b>会場で見るなら：</b>複数層のフィルム、薄いコーティング、気体を通しにくい性能の測定。</p><p><b>聞くなら：</b>「包装する食品によって、何を通さない設計に変えますか？」</p></article>
+              <article class="example-item"><h4>開けやすい容器のふた</h4><p><b>何に使う：</b>輸送中は密封し、使うときは適度な力で剥がせる。</p><p><b>会場で見るなら：</b>接着・シール材、剥離力の試験、貼り合わせの条件。</p><p><b>聞くなら：</b>「密封性と開けやすさをどう両立させていますか？」</p></article>
+              <article class="example-item"><h4>弁当や菓子のプラスチックトレー</h4><p><b>何に使う：</b>中身を支え、輸送時の変形を抑える。</p><p><b>会場で見るなら：</b>樹脂シートを温めて型に沿わせる熱成形、厚みや形状の検査。</p><p><b>聞くなら：</b>「薄肉化すると、どこが変形しやすくなりますか？」</p></article>
+              <article class="example-item"><h4>再生プラスチックの日用品</h4><p><b>何に使う：</b>回収材を選別・再加工し、容器や部品の材料へ戻す。</p><p><b>会場で見るなら：</b>回収片、再生ペレット、成形品、色や強度のばらつき。</p><p><b>聞くなら：</b>「原料が変わったとき、品質をどう揃えますか？」</p></article>
+            </div>
+            <p class="example-source">参考：<a href="https://www.toyobo.co.jp/seihin/vc/bfilm/" target="_blank" rel="noopener noreferrer">東洋紡のバリアフィルム解説</a>。包装材は製品ごとに必要な性能が異なります。</p>
+          </details>
+          <details class="card example-group">
+            <summary><span>⚙️ 金属・セラミックス・建材</span><small>図と4例を開く／閉じる</small></summary>
+            <figure class="example-figure">
+              <svg viewBox="0 0 900 230" role="img" aria-labelledby="diagram-hard-title">
+                <title id="diagram-hard-title">熱処理で硬さを変える金属の歯車、流体を通すセラミックハニカム、熱を逃がす金属放熱板の形と用途を並べた図。</title>
+                <text x="20" y="26" class="diagram-title">材料の「形」と「処理」で、働きが変わる</text>
+                <rect x="22" y="46" width="271" height="160" rx="13" fill="#fff" stroke="#c3d9d7"/><rect x="314" y="46" width="271" height="160" rx="13" fill="#fff" stroke="#c3d9d7"/><rect x="606" y="46" width="271" height="160" rx="13" fill="#fff" stroke="#c3d9d7"/>
+                <circle cx="154" cy="112" r="47" fill="#b6cad6" stroke="#5d8497" stroke-width="8"/><circle cx="154" cy="112" r="15" fill="#fff" stroke="#5d8497" stroke-width="5"/>
+                <path d="M154 53v16M154 155v16M96 112h16M197 112h16M113 70l12 12m58 58 12 12m-82 0 12-12m58-58 12-12" stroke="#5d8497" stroke-width="9"/>
+                <text x="65" y="190" class="diagram-label">歯車：熱処理で硬さを調整</text>
+                <rect x="350" y="69" width="199" height="87" rx="5" fill="#d7e6e0" stroke="#5f9688" stroke-width="3"/>
+                <path d="M370 73v80m32-80v80m32-80v80m32-80v80m32-80v80m32-80v80M353 99h193M353 128h193" stroke="#5f9688" stroke-width="3"/>
+                <text x="350" y="190" class="diagram-label">ハニカム：多数の通路</text>
+                <rect x="639" y="145" width="202" height="16" rx="3" fill="#aecbd8" stroke="#4d8299" stroke-width="2"/>
+                <path d="M653 80v64m30-79v79m30-84v84m30-84v84m30-79v79m30-70v70m26-55v55" stroke="#4d8299" stroke-width="12"/>
+                <path d="M678 60V45m-8 8 8-8 8 8m63 6V44m-8 8 8-8 8 8m57 20V51m-8 8 8-8 8 8" class="diagram-arrow"/>
+                <text x="638" y="190" class="diagram-label">放熱板：表面積を増やす</text>
+              </svg>
+              <figcaption>模式図：同じ「材料」の話でも、加工・熱処理・内部の通路・形状など、性能を決めるポイントが違います。</figcaption>
+            </figure>
+            <div class="example-grid">
+              <article class="example-item"><h4>摩耗しにくい歯車</h4><p><b>何に使う：</b>機械や車の回転を伝える。表面の硬さと内部の粘り強さが重要になる。</p><p><b>会場で見るなら：</b>特殊鋼、熱処理炉、硬さ・寸法・摩耗の試験。</p><p><b>聞くなら：</b>「熱処理の前後で、どの数値を確認しますか？」</p></article>
+              <article class="example-item"><h4>セラミックのハニカム部材</h4><p><b>何に使う：</b>細かな通路を多数設け、流体を通す部材に使う。</p><p><b>会場で見るなら：</b>蜂の巣状の形、粉の成形、焼成後の寸法・割れの検査。</p><p><b>聞くなら：</b>「穴の形を崩さず焼くには、何が難しいですか？」</p></article>
+              <article class="example-item"><h4>アルミ・銅の放熱板</h4><p><b>何に使う：</b>機器内の熱を広げて外へ逃がす。</p><p><b>会場で見るなら：</b>金属板、フィン加工、表面処理、熱特性の評価。</p><p><b>聞くなら：</b>「材料の選択と形の設計は、どちらが効きますか？」</p></article>
+              <article class="example-item"><h4>建物を軽くする断熱パネル</h4><p><b>何に使う：</b>熱の出入りを抑えながら、施工しやすい重さにする。</p><p><b>会場で見るなら：</b>発泡材・複合材、積層構造、断熱・燃焼・耐久の評価。</p><p><b>聞くなら：</b>「断熱性以外に、採用時は何を試験しますか？」</p></article>
+            </div>
+            <p class="example-source">素材から最終用途への一般的な例です。実際の用途・性能は、展示品ごとに担当者へ確認してください。</p>
+          </details>
+          <details class="card example-group">
+            <summary><span>🏭 作る機械</span><small>図と4例を開く／閉じる</small></summary>
+            <figure class="example-figure">
+              <svg viewBox="0 0 900 230" role="img" aria-labelledby="diagram-machines-title">
+                <title id="diagram-machines-title">樹脂粒からシートを押し出し、液を塗り、乾燥させて検査する製造ラインの模式図。</title>
+                <text x="20" y="26" class="diagram-title">フィルムができるまで：装置を工程の順につなぐ</text>
+                <rect x="22" y="62" width="140" height="119" rx="13" fill="#fff" stroke="#c3d9d7"/>
+                <circle cx="69" cy="97" r="8" fill="#e7a774"/><circle cx="93" cy="113" r="8" fill="#e7a774"/><circle cx="117" cy="91" r="8" fill="#e7a774"/><circle cx="72" cy="132" r="8" fill="#e7a774"/><circle cx="115" cy="139" r="8" fill="#e7a774"/>
+                <text x="59" y="166" class="diagram-label">樹脂粒</text>
+                <path d="M166 118h36m-10-9 10 9-10 9" class="diagram-arrow"/>
+                <rect x="207" y="62" width="140" height="119" rx="13" fill="#fff" stroke="#c3d9d7"/>
+                <path d="M228 105h94l-18 24h-58z" fill="#d1e7df" stroke="#438b85" stroke-width="3"/><path d="M322 117h16" stroke="#438b85" stroke-width="6"/>
+                <text x="246" y="166" class="diagram-label">押し出す</text>
+                <path d="M351 118h36m-10-9 10 9-10 9" class="diagram-arrow"/>
+                <rect x="392" y="62" width="140" height="119" rx="13" fill="#fff" stroke="#c3d9d7"/>
+                <path d="M415 132h95" stroke="#438b85" stroke-width="10"/><path d="M456 85v31" stroke="#e7a774" stroke-width="7"/><path d="M443 87h27" stroke="#b77b37" stroke-width="7"/>
+                <text x="430" y="166" class="diagram-label">薄く塗る</text>
+                <path d="M536 118h36m-10-9 10 9-10 9" class="diagram-arrow"/>
+                <rect x="577" y="62" width="140" height="119" rx="13" fill="#fff" stroke="#c3d9d7"/>
+                <rect x="596" y="101" width="102" height="43" rx="5" fill="#f9e8d5" stroke="#c88557" stroke-width="3"/>
+                <path d="M610 89q10-17 20 0m16 0q10-17 20 0m16 0q10-17 20 0" fill="none" stroke="#d3824f" stroke-width="3"/>
+                <text x="615" y="166" class="diagram-label">乾燥する</text>
+                <path d="M721 118h36m-10-9 10 9-10 9" class="diagram-arrow"/>
+                <rect x="762" y="62" width="116" height="119" rx="13" fill="#fff" stroke="#c3d9d7"/>
+                <path d="M779 120h83" stroke="#438b85" stroke-width="8"/><path d="M820 91v55m-10-46 10-9 10 9m-20 37 10 9 10-9" class="diagram-arrow"/>
+                <text x="779" y="166" class="diagram-label">厚みを測る</text>
+                <text x="24" y="208" class="diagram-note">例：樹脂フィルムの一部の工程。実際のライン構成は製品によって変わります。</text>
+              </svg>
+              <figcaption>工程図：会場で機械を見たら「どの工程を担う装置ですか？」と聞くと、ライン全体での役割が分かります。</figcaption>
+            </figure>
+            <div class="example-grid">
+              <article class="example-item"><h4>押出機</h4><p><b>何をする：</b>樹脂粒を熱で溶かし、口金から連続して出してシートなどにする。</p><p><b>会場で見るなら：</b>原料投入部、スクリュー、口金、冷却工程。</p><p><b>聞くなら：</b>「原料が変わると、どの条件を最初に調整しますか？」</p></article>
+              <article class="example-item"><h4>射出成形機</h4><p><b>何をする：</b>溶けた樹脂を型へ流し、決まった形の部品を繰り返し作る。</p><p><b>会場で見るなら：</b>金型、成形品、温度・圧力・時間の記録。</p><p><b>聞くなら：</b>「不良が出たとき、成形条件と金型のどちらを見ますか？」</p></article>
+              <article class="example-item"><h4>塗工機</h4><p><b>何をする：</b>フィルムや金属箔へ液を薄く均一に塗る。</p><p><b>会場で見るなら：</b>ロール、ノズル、塗布後の厚み分布。</p><p><b>聞くなら：</b>「幅方向の塗りムラは、どう検知して直しますか？」</p></article>
+              <article class="example-item"><h4>乾燥機・工業炉</h4><p><b>何をする：</b>液の水分・溶剤を飛ばしたり、熱で材料の状態を変えたりする。</p><p><b>会場で見るなら：</b>温度の分布、搬送速度、乾燥後・焼成後の品質。</p><p><b>聞くなら：</b>「温度と時間の組み合わせは、何を基準に決めますか？」</p></article>
+            </div>
+            <p class="example-source">参考：<a href="https://www.material-expo.jp/tokyo/ja-jp/search/2026mwt0930/directory/details.org-0aba5d20-8670-4825-b380-e7df012881c6.html" target="_blank" rel="noopener noreferrer">公式掲載のテストコーター・測定機器例</a>。</p>
+          </details>
+          <details class="card example-group">
+            <summary><span>🔎 検査・データ・再利用</span><small>図と4例を開く／閉じる</small></summary>
+            <figure class="example-figure">
+              <svg viewBox="0 0 900 230" role="img" aria-labelledby="diagram-data-title">
+                <title id="diagram-data-title">原料と製造条件の記録に測定値を結び、ばらつきを見て次の条件調整を検討する流れ図。</title>
+                <text x="20" y="26" class="diagram-title">品質のばらつきを調べる：測るだけで終わらせない</text>
+                <rect x="30" y="62" width="176" height="113" rx="13" fill="#fff" stroke="#c3d9d7"/>
+                <circle cx="69" cy="102" r="10" fill="#e7a774"/><circle cx="96" cy="111" r="10" fill="#e7a774"/>
+                <text x="54" y="150" class="diagram-label">原料・ロット</text>
+                <path d="M210 119h49m-11-9 11 9-11 9" class="diagram-arrow"/>
+                <rect x="264" y="62" width="176" height="113" rx="13" fill="#fff" stroke="#c3d9d7"/>
+                <path d="M289 101h125M289 115h92M289 129h106" stroke="#6da9a0" stroke-width="6" stroke-linecap="round"/>
+                <text x="300" y="150" class="diagram-label">温度・速度など</text>
+                <path d="M444 119h49m-11-9 11 9-11 9" class="diagram-arrow"/>
+                <rect x="498" y="62" width="176" height="113" rx="13" fill="#fff" stroke="#c3d9d7"/>
+                <path d="M526 131l25-23 22 14 23-40 27 43 24-19" fill="none" stroke="#e49b68" stroke-width="4" stroke-linecap="round"/>
+                <text x="534" y="150" class="diagram-label">検査・測定値</text>
+                <path d="M678 119h49m-11-9 11 9-11 9" class="diagram-arrow"/>
+                <rect x="732" y="62" width="146" height="113" rx="13" fill="#fff" stroke="#c3d9d7"/>
+                <circle cx="804" cy="111" r="26" fill="#d1e7df" stroke="#438b85" stroke-width="3"/>
+                <path d="M788 111h33m-9-9 9 9-9 9" class="diagram-arrow"/>
+                <text x="753" y="151" class="diagram-label">原因・対策を検討</text>
+                <path d="M803 183v20H353v-17m-9 10 9-10 9 10" class="diagram-arrow"/>
+                <text x="430" y="198" class="diagram-note">次に試す条件へ戻す</text>
+              </svg>
+              <figcaption>流れ図：原料・工程・測定値を結び付けると、変化が起きた時点を追いやすくなります。原因や改善効果は実データで検証します。</figcaption>
+            </figure>
+            <div class="example-grid">
+              <article class="example-item"><h4>フィルムの厚み計</h4><p><b>何が分かる：</b>薄い膜の厚さと、場所によるムラ。</p><p><b>会場で見るなら：</b>測定ヘッド、ロール幅のグラフ、測定位置の記録。</p><p><b>聞くなら：</b>「測った値は塗工条件の調整に使っていますか？」</p></article>
+              <article class="example-item"><h4>顕微鏡による異物検査</h4><p><b>何が分かる：</b>傷、粒、付着物などの見た目や大きさ。</p><p><b>会場で見るなら：</b>拡大画像、良品と不良品の比較、撮像条件。</p><p><b>聞くなら：</b>「異物が見つかったら、どの工程まで原因を追えますか？」</p></article>
+              <article class="example-item"><h4>材料開発のデータ活用</h4><p><b>何をする：</b>配合・工程条件と測定結果を整理し、次に試す候補を絞る。</p><p><b>会場で見るなら：</b>実験データの画面、検索や予測のデモ。</p><p><b>聞くなら：</b>「過去の実験結果は、条件や原料ロットで検索できますか？」</p></article>
+              <article class="example-item"><h4>樹脂の再生ライン</h4><p><b>何をする：</b>回収、選別、破砕、洗浄、再ペレット化をつなぐ。</p><p><b>会場で見るなら：</b>各工程のサンプル、混入物の分離、再生材の物性測定。</p><p><b>聞くなら：</b>「回収元が異なるとき、どの段階で品質を分けますか？」</p></article>
+            </div>
+            <p class="example-source">装置の表示値だけで結論を出さず、測定値と工程・原料の記録を一緒に見ると原因を探しやすくなります。</p>
+          </details>
+        </div>
+        <div class="callout"><strong>迷ったらこの3問</strong><span>「何に使う？」「どう作る？」「良し悪しを何で測る？」。この3つが分かると、初めて見る展示でも話を続けられます。</span></div>
+      </div>
+    </section>
+    <section id="deeper">
+      <div class="wrap">
+        <span class="overline">06 · 一歩深く知る</span>
+        <h2>「同じ材料なのに性能が違う」のはなぜ？</h2>
+        <p class="section-intro">材料の名前だけで製品の良し悪しは決まりません。研究機関NIMSは、材料開発を「プロセス・構造・特性・性能」のつながりで捉えています。展示会で難しい説明を聞いても、この順番に当てはめると理解できます。</p>
+        <div class="deep-flow" aria-label="材料のプロセスから性能までのつながり">
+          <div class="deep-step"><span>01 · どう作った？</span><b>プロセス</b><p>原料の配合、温度、圧力、塗る速さ、焼く時間など。</p></div>
+          <div class="deep-step"><span>02 · 中はどうなった？</span><b>構造</b><p>粒の大きさ、層の厚み、気孔や欠陥の入り方など。</p></div>
+          <div class="deep-step"><span>03 · 何が測れる？</span><b>特性</b><p>強度、熱の通りやすさ、電気抵抗、透明性など。</p></div>
+          <div class="deep-step"><span>04 · 使える？</span><b>性能</b><p>実際の製品で、割れない・熱くなりにくい等の要求を満たすか。</p></div>
+        </div>
+        <div class="deep-pair">
+          <div class="card"><span class="mini-label">例：フィルム</span><h3>塗り方が変わると、表面も変わる</h3><p>同じ材料でも、塗る量や乾燥の条件によって層の厚み・表面状態が変わり得ます。だから「何を塗ったか」だけでなく「どう作ったか」の記録が重要です。</p><p class="example-line"><strong>会場で聞く</strong><span>「条件を変えたとき、どの測定値を見て良し悪しを判断しますか？」</span></p></div>
+          <div class="card"><span class="mini-label">例：セラミックス</span><h3>焼き方が変わると、内部も変わる</h3><p>粉を成形して焼く場合、熱のかけ方は収縮や緻密さに関わります。焼成後の寸法や特性を揃えるため、原料と工程の両方を管理します。</p><p class="example-line"><strong>会場で聞く</strong><span>「焼いた後の寸法や品質は、何を記録して管理しますか？」</span></p></div>
+        </div>
+        <h3 class="subheading">品質がぶれたとき、どこを見る？</h3>
+        <p class="section-intro">「AIで原因が分かりますか」と聞く前に、記録がある場所を探すと会話が具体的になります。原因は一つとは限りません。</p>
+        <div class="factor-grid"><div><b>原料</b>ロットや配合が変わった？</div><div><b>条件</b>温度・速度・時間が変わった？</div><div><b>設備</b>機械の状態や調整が変わった？</div><div><b>測定</b>測る時点や方法が違った？</div></div>
+        <p class="note">これは原因調査の入口です。実際の工程では、環境、人の作業、保管状態なども影響し得ます。</p>
+        <h3 class="subheading">相手の部署によって、知りたいことが違う</h3>
+        <p class="section-intro">名札に部署名があれば、質問の入口を少し変えられます。役割分担は会社によって異なります。</p>
+        <div class="role-grid">
+          <div class="role"><b>研究開発</b><p>新しい配合や構造を探し、性能を確かめる。</p><p class="ask">「試す条件をどう絞っていますか？」</p></div>
+          <div class="role"><b>生産技術・製造</b><p>量産時に同じ品質を安定して作る。</p><p class="ask">「条件の調整は何を見て決めますか？」</p></div>
+          <div class="role"><b>品質保証・検査</b><p>規格を満たすか確認し、不具合を追う。</p><p class="ask">「異常が出たら、どこまで遡れますか？」</p></div>
+          <div class="role"><b>調達・営業</b><p>材料の入手、価格、納期、顧客への説明を担う。</p><p class="ask">「仕様や見積りの確認に手間はありますか？」</p></div>
+        </div>
+        <h3 class="subheading">30秒で確認するミニ問題</h3>
+        <div class="quiz-grid">
+          <details><summary>薄いロール状の展示。最初に何を聞く？</summary><p>「どんな製品に使われ、何の性能を持たせていますか？」。フィルムは形の名前なので、用途と性能を先に確かめます。</p></details>
+          <details><summary>「焼成条件が重要」と言われた。次は？</summary><p>「条件によって何が変わり、それをどう測りますか？」。プロセスと特性を結び付けて聞けます。</p></details>
+          <details><summary>「品質がぶれる」と言われた。次は？</summary><p>「原料ロット、工程条件、検査結果は紐付いていますか？」。原因の断定を急がず、追跡できる記録を確かめます。</p></details>
+        </div>
+        <p class="note">この節の4要素の枠組みは<a href="https://www.nims.go.jp/cbrm/about/modeling_group.html" target="_blank" rel="noopener noreferrer">NIMSの材料モデリングの説明</a>、焼成の例は<a href="https://www.jfcc.or.jp/reference/" target="_blank" rel="noopener noreferrer">JFCCの焼成管理の説明</a>を参考に、展示会での会話向けに言い換えています。</p>
+      </div>
+    </section>
+    <section id="talk">
+      <div class="wrap">
+        <span class="overline">07 · 今日の会話</span>
+        <h2>分からないままでも、聞ける</h2>
+        <p class="section-intro">展示物の細かな原理を説明できなくても大丈夫。相手に「どんな製品へ、何のために使うか」を教えてもらえば、次に聞くことが見えてきます。</p>
+        <div class="two-col">
+          <div class="question-box"><h3>どのブースでも使える5つの質問</h3><ol><li>「これは最終的に、どんな製品に使われますか？」</li><li>「従来の材料・方法と比べて、何が違いますか？」</li><li>「製造するとき、安定させるのが難しい点は？」</li><li>「品質は何を測って判断していますか？」</li><li>「その記録はロットや設備ごとに残りますか？」</li></ol></div>
+          <div class="card"><span class="mini-label">会話の型</span><h3>「用途 → 工程 → 困りごと → データ」</h3><p><b>用途：</b>何に使う？<br><b>工程：</b>どう作る？<br><b>困りごと：</b>ムラ、歩留まり、見積りなど何に手間がかかる？<br><b>データ：</b>測定値や作業記録は残っている？</p><p class="plain">自分の事例を話すのは、相手の困りごとを聞いたあとで十分です。</p></div>
+        </div>
+        <h3 style="margin:31px 0 14px">Logos Tech の事例をつなぐなら</h3>
+        <div class="case-grid">
+          <div class="card case"><span class="mini-label">フィルム・塗工</span><h3>品質のばらつき</h3><p>工程別の記録をつなぎ、表面粗さの予測と異常ロットの分析を検証。</p><span class="status">CASE 02 · PoC完了</span></div>
+          <div class="card case"><span class="mini-label">半導体素材</span><h3>品質逸脱の予兆</h3><p>操業ログから将来の直径の範囲と、管理限界までの猶予を予測。</p><span class="status">CASE 01 · 過去データで検証</span></div>
+          <div class="card case"><span class="mini-label">部品加工</span><h3>図面と見積り</h3><p>図面の読み取り、見積り判断、加工先判定を分け、根拠を追える検証版を実装。</p><span class="status">CASE 03 · 合成図面で初期検証</span></div>
+          <div class="card case"><span class="mini-label">金属・調達</span><h3>発注計算</h3><p>鋼材の在庫・需要・板取・最小ロットを踏まえ、発注理由を説明できるよう改善。</p><span class="status">CASE 05 · 計算ロジックを技術支援</span></div>
+        </div>
+        <p class="note">事例集に記載された段階をそのまま記しています。未検証の歩留まり改善や作業時間削減を実績として話さないようにします。</p>
+      </div>
+    </section>
+    <section id="words">
+      <div class="wrap">
+        <span class="overline">08 · 最低限の用語</span>
+        <h2>耳にしたら、この意味で受け取る</h2>
+        <p class="section-intro">会場で聞きやすい言葉だけをまとめました。クリックすると短い説明が開きます。</p>
+        <div class="glossary">
+          <details><summary>工程条件</summary><p>温度、圧力、速度、時間、材料の比率など、製造中に調整する値。「条件を変えると品質が変わる」という会話で出ます。</p></details>
+          <details><summary>ロット・トレーサビリティ</summary><p>ロットは同じまとまりとして扱う製品の単位。トレーサビリティは、どの原料・設備・日時・条件で作ったか後から追えることです。</p></details>
+          <details><summary>歩留まり・不良率</summary><p>歩留まりは投入量や生産数に対して、良品として得られた割合。不良率は不良品の割合。現場によって数え方を確認すると正確です。</p></details>
+          <details><summary>公差・寸法精度</summary><p>設計した寸法から許されるズレの範囲が公差。図面と見積り、加工、検査の会話でよく使われます。</p></details>
+          <details><summary>塗工・膜厚</summary><p>塗工はフィルムなどへ液体を薄く均一に塗ること。膜厚はできた層の厚さ。場所ごとのムラが品質に影響します。</p></details>
+          <details><summary>射出成形・押出成形</summary><p>射出成形は溶けた樹脂を型へ流し込む方法。押出成形は材料を口金から連続して押し出す方法。形の作り方が違います。</p></details>
+          <details><summary>PoC（概念実証）</summary><p>限られたデータや条件で「できそうか」を確かめる段階。本番の工場で成果が出たことと同じではありません。</p></details>
+          <details><summary>マテリアルDX・MI</summary><p>材料開発・製造・品質管理などでデータを活用すること。MI（マテリアルズ・インフォマティクス）は、特に材料の候補や配合・特性の探索にデータ科学を使う考え方です。</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="sources">
+    <div class="wrap">
+      <h2>出典と読み方</h2>
+      <p>展示会の構成と出展分野は主催者の公式案内を確認し、技術の説明は初心者向けに言い換えました。企業ごとの製品・性能を保証する説明ではありません。</p>
+      <ul>
+        <li><a href="https://www.material-expo.jp/tokyo/ja-jp/about.html" target="_blank" rel="noopener noreferrer">高機能素材 Week 展示会概要</a></li>
+        <li><a href="https://www.material-expo.jp/tokyo/ja-jp/visit/mate.html" target="_blank" rel="noopener noreferrer">高機能マテリアル展</a></li>
+        <li><a href="https://www.material-expo.jp/tokyo/ja-jp/visit/film.html" target="_blank" rel="noopener noreferrer">高機能フィルム開発・製造展</a></li>
+        <li><a href="https://www.material-expo.jp/tokyo/ja-jp/visit/pla.html" target="_blank" rel="noopener noreferrer">高機能プラスチック開発・製造展</a></li>
+        <li><a href="https://www.material-expo.jp/tokyo/ja-jp/visit/metal.html" target="_blank" rel="noopener noreferrer">高機能 金属展</a></li>
+        <li><a href="https://www.material-expo.jp/tokyo/ja-jp/visit/cera.html" target="_blank" rel="noopener noreferrer">高機能セラミックス展</a></li>
+        <li><a href="https://www.material-expo.jp/tokyo/ja-jp/visit/susma.html" target="_blank" rel="noopener noreferrer">サステナブル マテリアル展</a></li>
+        <li><a href="https://www.material-expo.jp/tokyo/ja-jp/visit/joi.html" target="_blank" rel="noopener noreferrer">接着・接合 EXPO</a></li>
+        <li><a href="https://www.material-expo.jp/hub/ja-jp/exhibit/dry.html" target="_blank" rel="noopener noreferrer">次世代乾燥プロセス展</a></li>
+        <li><a href="https://www.material-expo.jp/hub/ja-jp/exhibit/analysis.html" target="_blank" rel="noopener noreferrer">材料分析・評価 World</a></li>
+        <li><a href="https://www.material-expo.jp/tokyo/ja-jp/visit/dx.html" target="_blank" rel="noopener noreferrer">マテリアルDX展</a></li>
+        <li><a href="https://www.material-expo.jp/tokyo/ja-jp/visit/exhibitor-list.html" target="_blank" rel="noopener noreferrer">2026年の出展社・製品一覧</a></li>
+        <li><a href="https://corporate.murata.com/ja-jp/company/business/capacitor" target="_blank" rel="noopener noreferrer">村田製作所：積層セラミックコンデンサ</a></li>
+        <li><a href="https://www.asahi-kasei.com/jp/services-products/energyinfrastructure" target="_blank" rel="noopener noreferrer">旭化成：電池セパレータ</a></li>
+        <li><a href="https://www.toyobo.co.jp/seihin/vc/bfilm/" target="_blank" rel="noopener noreferrer">東洋紡：食品包装用バリアフィルム</a></li>
+        <li><a href="https://www.nims.go.jp/cbrm/about/modeling_group.html" target="_blank" rel="noopener noreferrer">NIMS：材料のプロセス・構造・特性・性能</a></li>
+        <li><a href="https://www.jfcc.or.jp/exam/" target="_blank" rel="noopener noreferrer">JFCCの製造・評価プロセス案内</a></li>
+      </ul>
+      <p style="margin-top:13px">Logos Tech の事例部分：ユーザー提供の「株式会社Logos Tech｜AI・データ活用 事例集」（2026年9月）。</p>
+    </div>
+  </div>
+  <footer class="wrap footer">2026年10月1日の展示会で使う入門ガイド</footer>
+</body>
+</html>
