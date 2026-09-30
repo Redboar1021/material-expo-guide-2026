@@ -137,8 +137,8 @@
     .quiz-grid details { padding:2px 15px; }
     .quiz-grid summary { line-height:1.5; }
     .quiz-grid details p { line-height:1.6; }
-    .example-groups { display:grid; gap:13px; }
-    .example-group { padding:0 20px 18px; }
+    .example-groups { display:grid; grid-template-columns:minmax(0,1fr); gap:13px; }
+    .example-group { min-width:0; padding:0 20px 18px; }
     .example-group summary { display:flex; align-items:center; gap:12px; padding:16px 0; font-size:1.06rem; }
     .example-group summary::marker { color:var(--green); }
     .example-group summary small { margin-left:auto; color:var(--muted); font-size:.75rem; font-weight:700; white-space:nowrap; }
